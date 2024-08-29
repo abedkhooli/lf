@@ -1,5 +1,17 @@
 {
   "poetry_ar_3ds5": {
-    "hf_hub_url": "akhooli/3ds5",
+    "hf_hub_url": "akhooli/3ds5"
   },
+    "poetry_ar_3ds25": {
+    "hf_hub_url": "akhooli/3ds25"
+  },
+    "poetry_ar_3ds100": {
+    "hf_hub_url": "akhooli/3ds100"
+  },
+    "poetry_ar_3ds250": {
+    "hf_hub_url": "akhooli/3ds250"
+  },
+    "poetry_ar_3ds563": {
+    "hf_hub_url": "akhooli/p3ds_563k"
+  }
   }
