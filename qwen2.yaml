@@ -8,7 +8,7 @@ finetuning_type: full
 use_adam_mini: true
 
 ### dataset (were identity,alpaca_en_demo)
-dataset: dd
+dataset: poetry_ar_3ds5
 template: qwen
 cutoff_len: 1024
 max_samples: 1000
