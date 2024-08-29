@@ -1,4 +1,8 @@
-### model
+### ref
+# https://qwen.readthedocs.io/en/latest/training/SFT/llama_factory.html
+# https://qwen.readthedocs.io/en/latest/getting_started/quickstart.html
+
+### model 
 model_name_or_path: unsloth/Qwen2-7B-Instruct-bnb-4bit
 
 ### method
@@ -31,13 +35,14 @@ overwrite_output_dir: true
 ### train (1x8)
 per_device_train_batch_size: 2
 gradient_accumulation_steps: 8
-learning_rate: 1.0e-4
+learning_rate: 2.0e-4 # see https://github.com/hiyouga/LLaMA-Factory/issues/4614
 num_train_epochs: 1.0
 lr_scheduler_type: cosine
-warmup_ratio: 0.1
+#warmup_ratio: 0.1
+warmup_steps: 100
 bf16: true
 ddp_timeout: 180000000
-optim: adamw_torch # adamw_torch, adamw_8bit or adafactor
+optim: adamw_torch # adamw_torch, adamw_8bit or adafactor (paged_adamw_8bit good for OOM)
 
 ### eval (was 1 per dev)
 val_size: 0.1
