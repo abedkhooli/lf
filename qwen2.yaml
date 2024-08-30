@@ -1,6 +1,8 @@
 ### ref
 # https://qwen.readthedocs.io/en/latest/training/SFT/llama_factory.html
 # https://qwen.readthedocs.io/en/latest/getting_started/quickstart.html
+# LF colab https://colab.research.google.com/drive/1eRTPn37ltBbYsISy9Aw2NuI2Aq5CQrD9?usp=sharing#scrollTo=IMojogHbaOZF
+# https://github.com/InternLM/xtuner 
 
 ### model 
 model_name_or_path: unsloth/Qwen2-7B-Instruct-bnb-4bit
