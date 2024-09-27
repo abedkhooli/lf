@@ -33,7 +33,7 @@ model_name = "aubmindlab/bert-base-arabertv02"  # Choose the pre-trained model y
 batch_size = 2
 num_train_epochs = 1
 # Set the run name for logging and output directory
-run_name = "kd-bert"
+run_name = "kd-bert_p"
 output_dir = f"output/{run_name}"
 
 # Initialize the ColBERT model from the base model
