@@ -32,11 +32,11 @@ def main():
 
     # Define the base model, training parameters, and output directory
     model_name = "aubmindlab/bert-base-arabertv02"  # Choose the pre-trained model you want to use as base
-    batch_size = 2
+    batch_size = 3
     num_train_epochs = 1
     # Set the run name for logging and output directory
-    run_name = "kd-bert_p"
-    output_dir = f"output/{run_name}"
+    run_name = "kd-bert_p2"
+    output_dir = f"/tmp/{run_name}"
 
     # Initialize the ColBERT model from the base model
     model = models.ColBERT(model_name_or_path=model_name)
@@ -52,7 +52,8 @@ def main():
         fp16=True,  # Set to False if you get an error that your GPU can't run on FP16
         bf16=False,  # Set to True if you have a GPU that supports BF16
         run_name=run_name,
-        learning_rate=1e-5,
+        learning_rate=2e-5,
+        save_steps=5000, # default 500
     )
 
     # Use the Distillation loss function for training
