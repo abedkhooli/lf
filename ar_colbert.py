@@ -16,12 +16,20 @@ def main():
     from pylate import losses, models, utils
 
     import gc 
+    from unicodedata import normalize
+    #query_n = normalize('NFKC', query)
+    def get_norm(example):
+        example["text"] = normalize('NFKC', example["text"])
+        return example
     gc.collect()
     documents = load_dataset(path="akhooli/ar_mmarco_250_docs")
+    documents = documents.map(get_norm)
 
     gc.collect()
     queries = load_dataset(path="akhooli/ar_mmarco_250_queries")
+    queries = queries.map(get_norm)
 
+    gc.collect()
     train = load_dataset(path="akhooli/ar_mmarco_250_scores")
 
     # Set the transformation to load the documents/queries texts using the corresponding ids on the fly
@@ -34,7 +42,7 @@ def main():
     batch_size = 3
     num_train_epochs = 1
     # Set the run name for logging and output directory
-    run_name = "kd_p250"
+    run_name = "kd_p250n"
     output_dir = f"/tmp/{run_name}"
 
     # Initialize the ColBERT model from the base model
