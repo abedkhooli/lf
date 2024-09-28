@@ -17,13 +17,12 @@ def main():
 
     import gc 
     gc.collect()
-    #documents = Dataset.from_pandas(df_docs, preserve_index=False)
-    documents = load_dataset("csv", data_files='common-docs.tsv', sep='\t')
+    documents = load_dataset(path="akhooli/ar_mmarco_250_docs")
 
     gc.collect()
-    queries = load_dataset("csv", data_files='common-queries.tsv', sep='\t')
+    queries = load_dataset(path="akhooli/ar_mmarco_250_queries")
 
-    train = load_dataset(path="akhooli/arabic_mmarco_scores")
+    train = load_dataset(path="akhooli/ar_mmarco_250_scores")
 
     # Set the transformation to load the documents/queries texts using the corresponding ids on the fly
     train.set_transform(
@@ -35,7 +34,7 @@ def main():
     batch_size = 3
     num_train_epochs = 1
     # Set the run name for logging and output directory
-    run_name = "kd-bert_p2"
+    run_name = "kd_p250"
     output_dir = f"/tmp/{run_name}"
 
     # Initialize the ColBERT model from the base model
