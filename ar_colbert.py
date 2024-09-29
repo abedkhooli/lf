@@ -60,7 +60,7 @@ def main():
         bf16=False,  # Set to True if you have a GPU that supports BF16
         run_name=run_name,
         learning_rate=2e-5,
-        save_steps=100, # default 500
+        save_steps=10000, # default 500
     )
 
     # Use the Distillation loss function for training
