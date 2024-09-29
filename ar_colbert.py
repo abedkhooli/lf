@@ -3,7 +3,7 @@ def main():
     import os
     os.environ["WANDB_PROJECT"] = "pylate_mmarco_ar"
     import wandb 
-    wandb.login(key="5c5bd3b5c27fad8669de36ad478b24d1aa8625e4")
+    wandb.login(key="xxxxxxxxxxxxxx")
 
     import torch
     import pandas as pd
