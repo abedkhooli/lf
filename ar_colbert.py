@@ -3,7 +3,7 @@ def main():
     import os
     os.environ["WANDB_PROJECT"] = "pylate_mmarco_ar"
     import wandb 
-    wandb.login(key="xxxxxxxxxxxxxx")
+    wandb.login(key="5c5bd3b5c27fad8669de36ad478b24d1aa8625e4")
 
     import torch
     import pandas as pd
@@ -42,7 +42,7 @@ def main():
     batch_size = 3
     num_train_epochs = 1
     # Set the run name for logging and output directory
-    run_name = "kd_p5n"
+    run_name = "kd_p5n2"
     output_dir = f"/tmp/{run_name}"
 
     # Initialize the ColBERT model from the base model
@@ -76,6 +76,7 @@ def main():
     )
     trainer.train()
     model.save_pretrained('ar_colbert5')
+    model.push_to_hub('akhooli/ar_colbert_kd_5', token='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')
     # Your training code here
 if __name__ == "__main__":
     main()
