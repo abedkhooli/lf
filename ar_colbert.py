@@ -3,7 +3,7 @@ def main():
     import os
     os.environ["WANDB_PROJECT"] = "pylate_mmarco_ar"
     import wandb 
-    wandb.login(key="5c5bd3b5c27fad8669de36ad478b24d1aa8625e4")
+    wandb.login(key="xxx")
 
     import torch
     import pandas as pd
@@ -76,7 +76,7 @@ def main():
     )
     trainer.train()
     model.save_pretrained('ar_colbert5')
-    model.push_to_hub('akhooli/ar_colbert_kd_5n', token='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')
+    model.push_to_hub('akhooli/ar_colbert_kd_5n', token='hf_xxx')
     # Your training code here
 if __name__ == "__main__":
     main()
