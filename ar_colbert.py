@@ -75,8 +75,7 @@ def main():
         data_collator=utils.ColBERTCollator(tokenize_fn=model.tokenize),
     )
     trainer.train()
-    model.save_pretrained('ar_colbert5')
-    model.push_to_hub('akhooli/ar_colbert_kd_5n', token='hf_xxx')
+    model.save_pretrained('ar_colbert')
     # Your training code here
 if __name__ == "__main__":
     main()
