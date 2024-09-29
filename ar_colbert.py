@@ -22,15 +22,15 @@ def main():
         example["text"] = normalize('NFKC', example["text"])
         return example
     gc.collect()
-    documents = load_dataset(path="akhooli/ar_mmarco_5_docs")
+    documents = load_dataset(path="akhooli/ar_mmarco_250_docs")
     documents = documents.map(get_norm)
 
     gc.collect()
-    queries = load_dataset(path="akhooli/ar_mmarco_5_queries")
+    queries = load_dataset(path="akhooli/ar_mmarco_250_queries")
     queries = queries.map(get_norm)
 
     gc.collect()
-    train = load_dataset(path="akhooli/ar_mmarco_5_scores")
+    train = load_dataset(path="akhooli/ar_mmarco_250_scores")
 
     # Set the transformation to load the documents/queries texts using the corresponding ids on the fly
     train.set_transform(
@@ -42,7 +42,7 @@ def main():
     batch_size = 3
     num_train_epochs = 1
     # Set the run name for logging and output directory
-    run_name = "kd_p5n2"
+    run_name = "kd_250n"
     output_dir = f"/tmp/{run_name}"
 
     # Initialize the ColBERT model from the base model
