@@ -22,15 +22,15 @@ def main():
         example["text"] = normalize('NFKC', example["text"])
         return example
     gc.collect()
-    documents = load_dataset(path="akhooli/ar_mmarco_250_docs")
+    documents = load_dataset(path="akhooli/ar_mmarco_5_docs")
     documents = documents.map(get_norm)
 
     gc.collect()
-    queries = load_dataset(path="akhooli/ar_mmarco_250_queries")
+    queries = load_dataset(path="akhooli/ar_mmarco_5_queries")
     queries = queries.map(get_norm)
 
     gc.collect()
-    train = load_dataset(path="akhooli/ar_mmarco_250_scores")
+    train = load_dataset(path="akhooli/ar_mmarco_5_scores")
 
     # Set the transformation to load the documents/queries texts using the corresponding ids on the fly
     train.set_transform(
@@ -42,7 +42,7 @@ def main():
     batch_size = 3
     num_train_epochs = 1
     # Set the run name for logging and output directory
-    run_name = "kd_p250n"
+    run_name = "kd_p5n"
     output_dir = f"/tmp/{run_name}"
 
     # Initialize the ColBERT model from the base model
@@ -60,7 +60,7 @@ def main():
         bf16=False,  # Set to True if you have a GPU that supports BF16
         run_name=run_name,
         learning_rate=2e-5,
-        save_steps=5000, # default 500
+        save_steps=100, # default 500
     )
 
     # Use the Distillation loss function for training
@@ -75,6 +75,7 @@ def main():
         data_collator=utils.ColBERTCollator(tokenize_fn=model.tokenize),
     )
     trainer.train()
+    model.save_pretrained('ar_colbert5')
     # Your training code here
 if __name__ == "__main__":
     main()
